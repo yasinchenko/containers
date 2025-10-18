@@ -1,0 +1,34 @@
+version: "3.8"
+services:
+  node-1:
+    build: .
+    container_name: node-1
+    hostname: node-1
+    privileged: true
+    ports:
+      - "2222:22"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tty: true
+
+  node-2:
+    build: .
+    container_name: node-2
+    hostname: node-2
+    privileged: true
+    ports:
+      - "2223:22"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tty: true
+
+  node-3:
+    build: .
+    container_name: node-3
+    hostname: node-3
+    privileged: true
+    ports:
+      - "2224:22"
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    tty: true
