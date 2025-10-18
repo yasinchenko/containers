@@ -1,14 +1,23 @@
 version: "3.8"
+
 services:
   node-1:
     build: .
     container_name: node-1
     hostname: node-1
     privileged: true
+    cgroupns: host
+    command: ["/sbin/init"]
+    environment:
+      - container=docker
     ports:
       - "2222:22"
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
     tty: true
 
   node-2:
@@ -16,10 +25,18 @@ services:
     container_name: node-2
     hostname: node-2
     privileged: true
+    cgroupns: host
+    command: ["/sbin/init"]
+    environment:
+      - container=docker
     ports:
       - "2223:22"
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
     tty: true
 
   node-3:
@@ -27,8 +44,16 @@ services:
     container_name: node-3
     hostname: node-3
     privileged: true
+    cgroupns: host
+    command: ["/sbin/init"]
+    environment:
+      - container=docker
     ports:
       - "2224:22"
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
     tty: true
