@@ -6,7 +6,6 @@ services:
     container_name: node-1
     hostname: node-1
     privileged: true
-    cgroupns: host
     command: ["/sbin/init"]
     environment:
       - container=docker
@@ -25,7 +24,6 @@ services:
     container_name: node-2
     hostname: node-2
     privileged: true
-    cgroupns: host
     command: ["/sbin/init"]
     environment:
       - container=docker
@@ -44,7 +42,6 @@ services:
     container_name: node-3
     hostname: node-3
     privileged: true
-    cgroupns: host
     command: ["/sbin/init"]
     environment:
       - container=docker
